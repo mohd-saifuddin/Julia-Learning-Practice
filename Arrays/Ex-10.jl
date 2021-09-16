@@ -1,4 +1,6 @@
-function flattening(arr)
+# Ex 10.1
+
+function nestedsum(arr)
     rst = Any[]
     grab(seq) = for ele in seq 
                     if isa(ele, Array) 
@@ -8,14 +10,11 @@ function flattening(arr)
                     end
                 end
     grab(arr)
-    return rst
+    return sum(rst)
 end
 
 arr = [1, [1], [1, 1, [1]], [[1]], 1]
-
-@show flattening(arr)
-
-@time flattening(arr)
+println(nestedsum(arr))
 
 
 
