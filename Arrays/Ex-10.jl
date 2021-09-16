@@ -73,13 +73,34 @@ end
 
 arr = []
 println(issort(arr))
+
 arr = [1]
 println(issort(arr))
+
 arr = [1, 2, 3, 4, 4, 5, 10]
 println(issort(arr))
+
 arr = [21, 2, 1, 4]
 println(issort(arr))
+
 arr = ['a', 'b', 'v', 'z']
 println(issort(arr))
 
+
+# Ex 10.6
+
+function isanagram(str1, str2)
+    pattern = r"[\[\] .,/`~!@#$%^&*()-_=+{}:;''\"<>?|\\]"
+    str1 = collect(replace.(lowercase(str1), pattern => ""))
+    str2 = collect(replace.(lowercase(str2), pattern => ""))
+    if sort(str1) == sort(str2)
+        return true
+    else
+        return false
+    end
+end
+
+str1 = "A Decimal point!"
+str2 = "I'm a dot in place."
+println(isanagram(str1, str2))
 
