@@ -17,4 +17,18 @@ arr = [1, [1], [1, 1, [1]], [[1]], 1]
 println(nestedsum(arr))
 
 
+# Ex 10.2
+
+function cumulsum(arr)
+    rst = Any[]
+    cumsum = 0
+    for ele in arr
+        cumsum += ele
+        push!(rst, cumsum)
+    end
+    return rst
+end
+
+arr = collect(1:1:10)
+println(cumulsum(arr))
 
