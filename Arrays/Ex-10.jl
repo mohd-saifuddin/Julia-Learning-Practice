@@ -59,3 +59,27 @@ println(interior!(arr))
 println(arr)
 
 
+# Ex 10.5
+
+function issort(arr)
+    if length(arr) ≤ 1
+        return true
+    elseif arr[1] <= arr[2]
+        issort(arr[2:end])
+    else
+        return false
+    end
+end
+
+arr = []
+println(issort(arr))
+arr = [1]
+println(issort(arr))
+arr = [1, 2, 3, 4, 4, 5, 10]
+println(issort(arr))
+arr = [21, 2, 1, 4]
+println(issort(arr))
+arr = ['a', 'b', 'v', 'z']
+println(issort(arr))
+
+
