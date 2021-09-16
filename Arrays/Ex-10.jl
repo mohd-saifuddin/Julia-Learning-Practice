@@ -43,3 +43,19 @@ arr = collect(1:1:10)
 println(arr)
 println(interior(arr))
 println(arr)
+
+
+# Ex 10.4
+
+function interior!(arr)
+    deleteat!(arr, firstindex(arr))
+    deleteat!(arr, lastindex(arr))
+    return nothing
+end
+
+arr = collect(1:1:10)
+println(arr)
+println(interior!(arr))
+println(arr)
+
+
