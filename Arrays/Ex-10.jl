@@ -32,3 +32,14 @@ end
 arr = collect(1:1:10)
 println(cumulsum(arr))
 
+
+# Ex 10.3
+
+function interior(arr)
+    return arr[firstindex(arr)+1:lastindex(arr)-1]
+end
+
+arr = collect(1:1:10)
+println(arr)
+println(interior(arr))
+println(arr)
