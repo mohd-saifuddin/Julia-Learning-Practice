@@ -104,3 +104,33 @@ str1 = "A Decimal point!"
 str2 = "I'm a dot in place."
 println(isanagram(str1, str2))
 
+
+# Ex 10.7
+
+function hasduplicates(arr)
+    if length(arr) ≤ 1
+        return false
+    else
+        sort!(arr)
+        if arr[1] == arr[2]
+            return true
+        else
+            deleteat!(arr, 1)
+            return hasduplicates(arr)
+        end
+    end
+end
+
+arr = [1, 2, 3, 4, 5, 6, 7, 5, 1, 8]
+println(hasduplicates(arr))
+
+arr = collect(1:1:10)
+println(hasduplicates(arr))
+
+arr = []
+println(hasduplicates(arr))
+
+arr = [42]
+println(hasduplicates(arr))
+
+
