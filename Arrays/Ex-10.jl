@@ -134,3 +134,22 @@ arr = [42]
 println(hasduplicates(arr))
 
 
+# Ex 10.8
+
+function birthday_paradox(n_students, classrooms)
+    random_brithdays() = [rand(1:365) for i in range(1, length=n_students)]
+    duplicate_birth_count = 0
+    for i in range(1, length=classrooms)
+        if hasduplicates(random_brithdays())
+            duplicate_birth_count += 1
+        end
+    end
+    probability = round((duplicate_birth_count / classrooms) * 100, digits=5)
+    println("In $classrooms classrooms with $n_students students, around $probability% students have same birthdays.")
+end
+
+n_students = 23
+classrooms = 1000
+birthday_paradox(n_students, classrooms)
+
+
