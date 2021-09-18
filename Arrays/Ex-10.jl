@@ -153,3 +153,31 @@ classrooms = 1000
 birthday_paradox(n_students, classrooms)
 
 
+# EX 10.9
+
+function wordstoarrpush()
+    path = "/home/msaifuddin/Desktop/Julia-Learning-Practice"
+    arr = []
+    for line in eachline(path * "/words.txt")
+        push!(arr, line)
+    end
+    # println(arr)
+end
+
+# @time wordstoarrpush()
+
+function wordstoarridiom()
+    path = "/home/msaifuddin/Desktop/Julia-Learning-Practice"
+    arr = []
+    for line in eachline(path * "/words.txt")
+        arr = [arr..., line]
+    end
+    # println(arr)
+end
+
+# @time wordstoarridiom()
+
+
+
+
+
