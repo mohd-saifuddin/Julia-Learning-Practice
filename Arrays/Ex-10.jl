@@ -185,24 +185,19 @@ function inbisect(arr, target, low, high)
         return false
     elseif low == high
         if arr[low] == target
-            # println("Final Low/High = ", low)
             return true
         else
-            # println("NA")
             return false
         end
     else
         mid = (low + high) ÷ 2
         if arr[mid] == target
-            # println("Mid = ", mid)
             return true
         elseif arr[mid] < target
             low = mid + 1
-            # println("Changed Low = ", low, " High = ", high)
             inbisect(arr, target, low, high)
         else
             high = mid - 1
-            # println("Low = ", low, " Changed High = ", high)
             inbisect(arr, target, low, high)
         end
     end
