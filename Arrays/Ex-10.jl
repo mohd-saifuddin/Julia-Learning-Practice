@@ -181,23 +181,28 @@ end
 # Ex 10.10
 
 function inbisect(arr, target, low, high)
-    if low == high
+    if low > high
+        return false
+    elseif low == high
         if arr[low] == target
-            println(low)
+            # println("Final Low/High = ", low)
             return true
         else
+            # println("NA")
             return false
         end
     else
         mid = (low + high) ÷ 2
         if arr[mid] == target
-            println(mid)
+            # println("Mid = ", mid)
             return true
         elseif arr[mid] < target
             low = mid + 1
+            # println("Changed Low = ", low, " High = ", high)
             inbisect(arr, target, low, high)
         else
             high = mid - 1
+            # println("Low = ", low, " Changed High = ", high)
             inbisect(arr, target, low, high)
         end
     end
@@ -233,3 +238,29 @@ low = firstindex(arr)
 high = lastindex(arr)
 println(inbisect(arr, target, low, high))
 
+arr = wordstoarrpush()
+target = "abcdefghij"
+low = firstindex(arr)
+high = lastindex(arr)
+println(inbisect(arr, target, low, high))
+
+
+# Ex 10.11
+
+function reversepairs()
+    wordarr = wordstoarrpush()
+    i = low = firstindex(wordarr)
+    n = high = lastindex(wordarr)
+    reversepair_count = 0
+    while i <= n
+        target = wordarr[i][end:-1:begin]
+        if inbisect(wordarr, target, low, high)
+            println(wordarr[i], " ==> ", target)
+            reversepair_count += 1
+        end
+        i += 1
+    end
+    println(reversepair_count)
+end
+
+reversepairs()

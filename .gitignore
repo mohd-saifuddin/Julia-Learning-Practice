@@ -24,5 +24,4 @@ docs/site/
 Manifest.toml
 
 # Words
-words.txt
-
+*.txt
