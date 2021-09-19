@@ -161,10 +161,10 @@ function wordstoarrpush()
     for line in eachline(path * "/words.txt")
         push!(arr, line)
     end
-    # println(arr)
+    return arr
 end
 
-# @time wordstoarrpush()
+@time wordstoarrpush()
 
 function wordstoarridiom()
     path = "/home/msaifuddin/Desktop/Julia-Learning-Practice"
@@ -172,12 +172,64 @@ function wordstoarridiom()
     for line in eachline(path * "/words.txt")
         arr = [arr..., line]
     end
-    # println(arr)
+    return arr
 end
 
 # @time wordstoarridiom()
 
 
+# Ex 10.10
 
+function inbisect(arr, target, low, high)
+    if low == high
+        if arr[low] == target
+            println(low)
+            return true
+        else
+            return false
+        end
+    else
+        mid = (low + high) ÷ 2
+        if arr[mid] == target
+            println(mid)
+            return true
+        elseif arr[mid] < target
+            low = mid + 1
+            inbisect(arr, target, low, high)
+        else
+            high = mid - 1
+            inbisect(arr, target, low, high)
+        end
+    end
+end
 
+arr = wordstoarrpush()
+target = "zymurgy"
+low = firstindex(arr)
+high = lastindex(arr)
+println(inbisect(arr, target, low, high))
+
+arr = wordstoarrpush()
+target = "aa"
+low = firstindex(arr)
+high = lastindex(arr)
+println(inbisect(arr, target, low, high))
+
+arr = wordstoarrpush()
+target = "lion"
+low = firstindex(arr)
+high = lastindex(arr)
+println(inbisect(arr, target, low, high))
+
+arr = wordstoarrpush()
+target = "sketch"
+low = firstindex(arr)
+high = lastindex(arr)
+println(inbisect(arr, target, low, high))
+
+arr = wordstoarrpush()
+target = "tricks"
+low = firstindex(arr)
+high = lastindex(arr)
+println(inbisect(arr, target, low, high))
 
