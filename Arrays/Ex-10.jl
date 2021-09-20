@@ -303,19 +303,18 @@ println(interlock2words(word1, word2))
 function findallinterlock2words()
     interlocked_count = 0
     wordarr = wordstoarrpush()
-    i = low = firstindex(wordarr)
-    n = high = lastindex(wordarr)
-    while i < n
-        word1 = wordarr[i]
-        word2 = wordarr[i+1]
-        target = interlock2words(word1, word2)
-        if inbisect(wordarr, target, low, high)
-            interlocked_count += 1
-            println(word1, " + ", word2, " = ", target)
+    low = firstindex(wordarr)
+    high = lastindex(wordarr)
+    for word1 in wordarr
+        for word2 in wordarr
+            target = interlock2words(word1, word2)
+            if inbisect(wordarr, target, low, high)
+                interlocked_count += 1
+                println(word1, " + ", word2, " = ", target)
+            end
         end
-        i += 1
     end
     println(interlocked_count)
 end
 
-findallinterlock2words()
+# findallinterlock2words()
