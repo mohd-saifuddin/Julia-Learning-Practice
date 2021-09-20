@@ -261,7 +261,7 @@ end
 reversepairs()
 
 
-# Ex 10.12
+# Ex 10.12.1
 
 
 function interlock2words(word1, word2)
