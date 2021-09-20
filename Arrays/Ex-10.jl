@@ -259,3 +259,63 @@ function reversepairs()
 end
 
 reversepairs()
+
+
+# Ex 10.12
+
+
+function interlock2words(word1, word2)
+    interlocked = ""
+    size_of_word1 = length(word1)
+    size_of_word2 = length(word2)
+    if size_of_word1 ≥ size_of_word2
+        i = 1
+        while i ≤ size_of_word2
+            interlocked *= (word1[i] * word2[i])
+            i += 1
+        end
+        interlocked *= word1[i:end]
+    elseif size_of_word1 ≤ size_of_word2
+        i = 1
+        while i ≤ size_of_word1
+            interlocked *= (word1[i] * word2[i])
+            i += 1
+        end
+        interlocked *= word2[i:end]
+    else
+        return nothing
+    end
+    return interlocked
+end
+
+word1 = "shoe"
+word2 = "cold"
+println(interlock2words(word1, word2))
+
+word1 = "SolarSystem"
+word2 = "BlackHole"
+println(interlock2words(word1, word2))
+
+word1 = "Milyway"
+word2 = "Andromeda"
+println(interlock2words(word1, word2))
+
+function findallinterlock2words()
+    interlocked_count = 0
+    wordarr = wordstoarrpush()
+    i = low = firstindex(wordarr)
+    n = high = lastindex(wordarr)
+    while i < n
+        word1 = wordarr[i]
+        word2 = wordarr[i+1]
+        target = interlock2words(word1, word2)
+        if inbisect(wordarr, target, low, high)
+            interlocked_count += 1
+            println(word1, " + ", word2, " = ", target)
+        end
+        i += 1
+    end
+    println(interlocked_count)
+end
+
+findallinterlock2words()
