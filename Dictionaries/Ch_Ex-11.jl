@@ -49,3 +49,35 @@ s = "freedom"
 h = histogram(s)
 v = 3
 println(findall(isequal(v), h))
+
+
+function invertdict_1(d)
+    inverse = Dict()
+    for key in keys(d)
+        val = d[key]
+        if val ∉ keys(inverse)
+            inverse[val] = [key]
+        else
+            push!(inverse[val], key)
+        end
+    end
+    return inverse
+end
+
+s = "freedom"
+h = histogram(s)
+println(h)
+println(invertdict_1(h))
+
+function invertdict_2(d)
+    inverse = Dict()
+    for val in unique(values(d))
+        inverse[val] = findall(isequal(val), d)
+    end
+    return inverse
+end
+
+s = "freedom"
+h = histogram(s)
+println(h)
+println(invertdict_2(h))
