@@ -1,4 +1,4 @@
-# Ch-11 and Ex-11
+# Ch-11 & Ex-11
 
 function histogram(s)
     d = Dict()
@@ -8,5 +8,13 @@ function histogram(s)
     return d
 end
 
-s = "Truth is freedom!"
-println(histogram(s))
+function printhist(h)
+    for c in keys(h)
+        println(c, " ", h[c])
+    end
+end
+
+s = "Freedom!"
+h = histogram(s)
+printhist(h)
+
