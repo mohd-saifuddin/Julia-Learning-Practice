@@ -105,3 +105,123 @@ println(fibonacci(n))
 n = -1
 println(fibonacci(n))
 
+
+# Ex 11.2
+
+function wordstodict()
+    path = "/home/msaifuddin/Desktop/Julia-Learning-Practice"
+    worddict = Dict()
+    for line in eachline(path * "/words.txt")
+        if line ∉ keys(worddict)
+            worddict[line] = 1
+        end
+    end
+    return worddict
+end
+
+function checkthekey(worddict, targetkey)
+    return targetkey ∈ keys(worddict)
+end
+
+function wordstoarr()
+    path = "/home/msaifuddin/Desktop/Julia-Learning-Practice"
+    arr = []
+    for line in eachline(path * "/words.txt")
+        push!(arr, line)
+    end
+    return arr
+end
+
+function inbisect(arr, target, low, high)
+    if low > high
+        return false
+    elseif low == high
+        if arr[low] == target
+            return true
+        else
+            return false
+        end
+    else
+        mid = (low + high) ÷ 2
+        if arr[mid] == target
+            return true
+        elseif arr[mid] < target
+            low = mid + 1
+            inbisect(arr, target, low, high)
+        else
+            high = mid - 1
+            inbisect(arr, target, low, high)
+        end
+    end
+end
+
+worddict = wordstodict()
+targetkey = "zymurgy"
+println(checkthekey(worddict, targetkey))
+println("Search Dict")
+@time checkthekey(worddict, targetkey)
+
+worddict = wordstodict()
+targetkey = "aa"
+println(checkthekey(worddict, targetkey))
+println("Search Dict")
+@time checkthekey(worddict, targetkey)
+
+worddict = wordstodict()
+targetkey = "lion"
+println(checkthekey(worddict, targetkey))
+println("Search Dict")
+@time checkthekey(worddict, targetkey)
+
+worddict = wordstodict()
+targetkey = "sketch"
+println(checkthekey(worddict, targetkey))
+println("Search Dict")
+@time checkthekey(worddict, targetkey)
+
+worddict = wordstodict()
+targetkey = "abcdefghij"
+println(checkthekey(worddict, targetkey))
+println("Search Dict")
+@time checkthekey(worddict, targetkey)
+
+arr = wordstoarr()
+target = "zymurgy"
+low = firstindex(arr)
+high = lastindex(arr)
+println(inbisect(arr, target, low, high))
+println("Search Array")
+@time inbisect(arr, target, low, high)
+
+arr = wordstoarr()
+target = "aa"
+low = firstindex(arr)
+high = lastindex(arr)
+println(inbisect(arr, target, low, high))
+println("Search Array")
+@time inbisect(arr, target, low, high)
+
+arr = wordstoarr()
+target = "lion"
+low = firstindex(arr)
+high = lastindex(arr)
+println(inbisect(arr, target, low, high))
+println("Search Array")
+@time inbisect(arr, target, low, high)
+
+arr = wordstoarr()
+target = "sketch"
+low = firstindex(arr)
+high = lastindex(arr)
+println(inbisect(arr, target, low, high))
+println("Search Array")
+@time inbisect(arr, target, low, high)
+
+arr = wordstoarr()
+target = "abcdefghij"
+low = firstindex(arr)
+high = lastindex(arr)
+println(inbisect(arr, target, low, high))
+println("Search Array")
+@time inbisect(arr, target, low, high)
+
