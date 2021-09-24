@@ -81,3 +81,27 @@ s = "freedom"
 h = histogram(s)
 println(h)
 println(invertdict_2(h))
+
+
+known = Dict(0 => 0, 1 => 1)
+
+function fibonacci(n)
+    if n >= 0
+        if n ∈ keys(known)
+            return known[n]
+        else
+            res = fibonacci(n-1) + fibonacci(n-2)
+            known[n] = res
+            return res
+        end
+    else
+        return nothing
+    end
+end
+
+n = 10
+println(fibonacci(n))
+
+n = -1
+println(fibonacci(n))
+
