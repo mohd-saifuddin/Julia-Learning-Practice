@@ -64,7 +64,7 @@ function invertdict_1(d)
     return inverse
 end
 
-s = "freedom"
+s = "freedomss"
 h = histogram(s)
 println(h)
 println(invertdict_1(h))
@@ -77,7 +77,7 @@ function invertdict_2(d)
     return inverse
 end
 
-s = "freedom"
+s = "freedomss"
 h = histogram(s)
 println(h)
 println(invertdict_2(h))
@@ -225,3 +225,37 @@ println(inbisect(arr, target, low, high))
 println("Search Array")
 @time inbisect(arr, target, low, high)
 
+
+# Ex 11.4
+
+known_ack = Dict()
+
+function ack(m, n)
+    if (m, n) ∈ keys(known_ack)
+        return known_ack[(m, n)]
+    else
+        if m == 0
+            result = n + 1
+            known_ack[(m, n)] = result
+            return result
+        elseif m > 0 && n == 0
+            result = ack(m-1, 1)
+            known_ack[(m, n)] = result
+            return result
+        elseif m > 0 && n > 0
+            result = ack(m-1, ack(m, n-1))
+            known_ack[(m, n)] = result
+            return result
+        end
+    end
+end
+
+l = 0
+h = 3
+for m in l:h
+    for n in l:h
+        println(ack(m, n))
+    end
+end
+
+println(known_ack)
