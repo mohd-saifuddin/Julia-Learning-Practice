@@ -259,3 +259,23 @@ for m in l:h
 end
 
 println(known_ack)
+
+
+# Ex 11.5
+
+function hasduplicates(arr)
+    h = histogram(arr)
+    println(h)
+    for val in values(h)
+        if val > 1
+            return true
+        end
+    end
+    return false
+end
+
+arr = collect(0:10)
+println(hasduplicates(arr))
+
+arr = [1, 1, 1, 3, 2, 4, 5]
+println(hasduplicates(arr))
