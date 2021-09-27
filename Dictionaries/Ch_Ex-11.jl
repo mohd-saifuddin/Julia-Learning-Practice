@@ -279,3 +279,35 @@ println(hasduplicates(arr))
 
 arr = [1, 1, 1, 3, 2, 4, 5]
 println(hasduplicates(arr))
+
+
+# Ex 11.6
+
+function rotateword(word, num)
+    rotatedword = ""
+    for char in word
+        rotatedword *= Char(Int(char) + num)
+    end
+    return rotatedword
+end
+
+word = "batman"
+num = 3
+println(rotateword(word, num))
+
+function rotatepairs(worddict)
+    pairlist = []
+    for word in keys(worddict)
+        for i in 1:25
+            rotatedword = rotateword(word, i)
+            if rotateword ∈ keys(worddict)
+                push!(pairlist, (word, i, rotateword))
+            end
+        end
+    end
+    sort!(pairlist)
+    return pairlist
+end
+
+worddict = wordstodict()
+println(rotatepairs(worddict))
