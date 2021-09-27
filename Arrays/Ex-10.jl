@@ -2,11 +2,11 @@
 
 function nestedsum(arr)
     rst = Any[]
-    grab(seq) = for ele in seq 
-                    if isa(ele, Array) 
-                        grab(ele) 
-                    else 
-                        push!(rst, ele) 
+    grab(seq) = for ele in seq
+                    if isa(ele, Array)
+                        grab(ele)
+                    else
+                        push!(rst, ele)
                     end
                 end
     grab(arr)
