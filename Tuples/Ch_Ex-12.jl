@@ -38,3 +38,30 @@ println(hasmatch(t1, t2))
 t1 = [1, 2, 3]
 t2 = [4, 5, 6]
 println(hasmatch(t1, t2))
+
+
+# Ex 12.2
+
+function readthestoryfile()
+    juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
+    pattern = r"[\[\] .,/`~!@#$%^&*()-_=+{}:;''\"<>?|\\]"
+    alicedata = ""
+    for line in eachline(juliadir * "alice_wonderland.txt")
+        alicedata *= replace.(lowercase(line), pattern => "")
+    end
+    return alicedata
+end
+
+function mostfrequent(strdata)
+    datadict = Dict()
+    for c in strdata
+        datadict[c] = get(datadict, c, 0) + 1
+    end
+    datadict = reverse(sort(collect(datadict), by = x -> x[2]))
+    for (letter, freq) in datadict
+        println("$letter $freq")
+    end
+end
+
+strdata = readthestoryfile()
+mostfrequent(strdata)
