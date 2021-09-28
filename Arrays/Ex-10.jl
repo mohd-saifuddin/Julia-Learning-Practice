@@ -263,7 +263,6 @@ reversepairs()
 
 # Ex 10.12.1
 
-
 function interlock2words(word1, word2)
     interlocked = ""
     size_of_word1 = length(word1)
