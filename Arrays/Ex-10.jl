@@ -156,9 +156,9 @@ birthday_paradox(n_students, classrooms)
 # EX 10.9
 
 function wordstoarrpush()
-    path = "/home/msaifuddin/Desktop/Julia-Learning-Practice"
+    juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
     arr = []
-    for line in eachline(path * "/words.txt")
+    for line in eachline(juliadir * "words.txt")
         push!(arr, line)
     end
     return arr
@@ -167,9 +167,9 @@ end
 @time wordstoarrpush()
 
 function wordstoarridiom()
-    path = "/home/msaifuddin/Desktop/Julia-Learning-Practice"
+    juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
     arr = []
-    for line in eachline(path * "/words.txt")
+    for line in eachline(juliadir * "words.txt")
         arr = [arr..., line]
     end
     return arr

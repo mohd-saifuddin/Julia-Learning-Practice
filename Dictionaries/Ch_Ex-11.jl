@@ -109,9 +109,9 @@ println(fibonacci(n))
 # Ex 11.2
 
 function wordstodict()
-    path = "/home/msaifuddin/Desktop/Julia-Learning-Practice"
+    juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
     worddict = Dict()
-    for line in eachline(path * "/words.txt")
+    for line in eachline(juliadir * "words.txt")
         if line ∉ keys(worddict)
             worddict[line] = 1
         end
@@ -124,9 +124,9 @@ function checkthekey(worddict, targetkey)
 end
 
 function wordstoarr()
-    path = "/home/msaifuddin/Desktop/Julia-Learning-Practice"
+    juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
     arr = []
-    for line in eachline(path * "/words.txt")
+    for line in eachline(juliadir * "words.txt")
         push!(arr, line)
     end
     return arr
