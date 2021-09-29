@@ -75,7 +75,7 @@ strdata = readthestoryfile()
 mostfrequent(strdata)
 
 
-# Ex 12.3
+# Ex 12.3.1, Ex 12.3.2
 
 function wordstodict()
     worddict = Dict()
@@ -117,10 +117,11 @@ function allanagramns(wordarr)
             anagramdict[word1] = anagramslist
         end
     end
+    anagramdict = reverse(sort(collect(anagramdict), by = x -> length(x[2])))
     return anagramdict
 end
 
 l = 1
-h = 10000
+h = 15000
 wordarr = collect(keys(wordstodict()))[l:h]
 println(allanagramns(wordarr))
