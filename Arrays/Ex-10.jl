@@ -308,7 +308,7 @@ word1 = "SolarSystem"
 word2 = "BlackHole"
 println(interlock2words(word1, word2))
 
-word1 = "Milyway"
+word1 = "Milkyway"
 word2 = "Andromeda"
 println(interlock2words(word1, word2))
 
