@@ -89,11 +89,24 @@ println(issort(arr))
 
 # Ex 10.6
 
+function useonly(str1, str2)
+    for ch1 in str1
+        if ch1 ∉ str2
+            return false
+        end
+    end
+    return true
+end
+
+function useall(str1, str2)
+    useonly(str2, str1)
+end
+
 function isanagram(str1, str2)
     pattern = r"[\[\] .,/`~!@#$%^&*()-_=+{}:;''\"<>?|\\]"
-    str1 = collect(replace.(lowercase(str1), pattern => ""))
-    str2 = collect(replace.(lowercase(str2), pattern => ""))
-    if sort(str1) == sort(str2)
+    str1 = replace.(lowercase(str1), pattern => "")
+    str2 = replace.(lowercase(str2), pattern => "")
+    if useall(str1, str2)
         return true
     else
         return false
