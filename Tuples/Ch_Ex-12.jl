@@ -52,11 +52,16 @@ function readthestoryfile()
     return alicedata
 end
 
-function mostfrequent(strdata)
-    datadict = Dict()
-    for c in strdata
-        datadict[c] = get(datadict, c, 0) + 1
+function histogram(str)
+    d = Dict()
+    for c in str
+        d[c] = get(d, c, 0) + 1
     end
+    return d
+end
+
+function mostfrequent(strdata)
+    datadict = histogram(strdata)
     datadict = reverse(sort(collect(datadict), by = x -> x[2]))
     for (letter, freq) in datadict
         println("$letter $freq")
