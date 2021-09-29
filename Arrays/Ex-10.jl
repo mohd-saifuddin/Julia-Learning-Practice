@@ -1,5 +1,7 @@
 # Ex 10.1
 
+juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
+
 function nestedsum(arr)
     rst = Any[]
     grab(seq) = for ele in seq
@@ -106,7 +108,7 @@ function isanagram(str1, str2)
     pattern = r"[\[\] .,/`~!@#$%^&*()-_=+{}:;''\"<>?|\\]"
     str1 = replace.(lowercase(str1), pattern => "")
     str2 = replace.(lowercase(str2), pattern => "")
-    if useall(str1, str2)
+    if sort(str1) == sort(str2)
         return true
     else
         return false
@@ -169,7 +171,6 @@ birthday_paradox(n_students, classrooms)
 # EX 10.9
 
 function wordstoarrpush()
-    juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
     arr = []
     for line in eachline(juliadir * "words.txt")
         push!(arr, line)
@@ -180,7 +181,6 @@ end
 @time wordstoarrpush()
 
 function wordstoarridiom()
-    juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
     arr = []
     for line in eachline(juliadir * "words.txt")
         arr = [arr..., line]

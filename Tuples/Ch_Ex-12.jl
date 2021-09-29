@@ -1,3 +1,7 @@
+# Ch-12 & Ex-12
+
+juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
+
 function printall(args...)
     println(args)
 end
@@ -43,7 +47,6 @@ println(hasmatch(t1, t2))
 # Ex 12.2
 
 function readthestoryfile()
-    juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
     pattern = r"[\[\] .,/`~!@#$%^&*()-_=+{}:;''\"<>?|\\]"
     alicedata = ""
     for line in eachline(juliadir * "alice_wonderland.txt")
@@ -70,3 +73,54 @@ end
 
 strdata = readthestoryfile()
 mostfrequent(strdata)
+
+
+# Ex 12.3
+
+function wordstodict()
+    worddict = Dict()
+    for line in eachline(juliadir * "words.txt")
+        if line ∉ keys(worddict)
+            worddict[line] = 1
+        end
+    end
+    return worddict
+end
+
+function isanagram(word1, word2)
+    if word1 == word2
+        return false
+    else
+        pattern = r"[\[\] .,/`~!@#$%^&*()-_=+{}:;''\"<>?|\\]"
+        word1 = collect(replace.(lowercase(word1), pattern => ""))
+        word2 = collect(replace.(lowercase(word2), pattern => ""))
+        if sort(word1) == sort(word2)
+            return true
+        else
+            return false
+        end
+    end
+end
+
+function allanagramns(wordarr)
+    anagramdict = Dict()
+    for word1 in wordarr
+        anagramslist = []
+        for word2 in wordarr
+            if isanagram(word1, word2)
+                push!(anagramslist, word2)
+            else
+                continue
+            end
+        end
+        if length(anagramslist) ≥ 1
+            anagramdict[word1] = anagramslist
+        end
+    end
+    return anagramdict
+end
+
+l = 1
+h = 10000
+wordarr = collect(keys(wordstodict()))[l:h]
+println(allanagramns(wordarr))

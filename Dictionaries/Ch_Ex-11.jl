@@ -1,5 +1,7 @@
 # Ch-11 & Ex-11
 
+juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
+
 function histogram(s)
     d = Dict()
     for c in s
@@ -109,7 +111,6 @@ println(fibonacci(n))
 # Ex 11.2
 
 function wordstodict()
-    juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
     worddict = Dict()
     for line in eachline(juliadir * "words.txt")
         if line ∉ keys(worddict)
@@ -124,7 +125,6 @@ function checkthekey(worddict, targetkey)
 end
 
 function wordstoarr()
-    juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
     arr = []
     for line in eachline(juliadir * "words.txt")
         push!(arr, line)
