@@ -100,6 +100,23 @@ wordlist = wordstoarr()
 ex13_4(uniquewords, wordlist)
 
 
+# Ex 13.5
+
+function choosefromhist(hist)
+    temparr = []
+    for (word, freq) in hist
+        for i in 1:freq
+            push!(temparr, word)
+        end
+    end
+    return rand(temparr)
+end
+
+allwords = getallwordsfrombook()
+hist = wordhistogram(allwords)
+println(choosefromhist(hist))
+
+
 # EX 13.6
 
 function bookwordstodict()
