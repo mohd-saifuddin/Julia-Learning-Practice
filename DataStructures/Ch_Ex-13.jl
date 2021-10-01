@@ -65,10 +65,8 @@ println(wordhistogram(allwords))
 
 function get20most(hist, num = 20)
     hist = reverse(sort(collect(hist), by = x -> x[2]))
-    i = 1
     for (word, freq) in hist[begin:num]
         println(word, "\t", freq)
-        i += 1
     end
 end
 
