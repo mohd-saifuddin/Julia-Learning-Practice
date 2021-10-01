@@ -65,7 +65,7 @@ end
 
 function mostfrequent(strdata)
     datadict = histogram(strdata)
-    datadict = reverse(sort(collect(datadict), by = x -> x[2]))
+    datadict = reverse(sort(collect(datadict), by=x->x[2]))
     for (letter, freq) in datadict
         println("$letter $freq")
     end
@@ -81,7 +81,7 @@ function wordstodict()
     worddict = Dict()
     for line in eachline(juliadir * "words.txt")
         if line ∉ keys(worddict)
-            worddict[line] = 1
+            worddict[line] = nothing
         end
     end
     return worddict
@@ -117,7 +117,7 @@ function allanagramns(wordarr)
             anagramdict[word1] = anagramslist
         end
     end
-    anagramdict = reverse(sort(collect(anagramdict), by = x -> length(x[2])))
+    anagramdict = reverse(sort(collect(anagramdict), by=x->length(x[2])))
     return anagramdict
 end
 

@@ -114,7 +114,7 @@ function wordstodict()
     worddict = Dict()
     for line in eachline(juliadir * "words.txt")
         if line ∉ keys(worddict)
-            worddict[line] = 1
+            worddict[line] = nothing
         end
     end
     return worddict

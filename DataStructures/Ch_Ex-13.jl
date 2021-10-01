@@ -63,8 +63,8 @@ println(wordhistogram(allwords))
 
 # Ex 13.3
 
-function get20most(hist, num = 20)
-    hist = reverse(sort(collect(hist), by = x -> x[2]))
+function get20most(hist, num::Int64=20)
+    hist = reverse(sort(collect(hist), by=x->x[2]))
     for (word, freq) in hist[begin:num]
         println(word, "\t", freq)
     end
@@ -98,3 +98,31 @@ allwords = getallwordsfrombook()
 uniquewords = keys(wordhistogram(allwords))
 wordlist = wordstoarr()
 ex13_4(uniquewords, wordlist)
+
+
+# EX 13.6
+
+function bookwordstodict()
+    allwords = getallwordsfrombook()
+    bookdict = Dict()
+    for word in allwords
+        bookdict[word] = nothing
+    end
+    return bookdict
+end
+
+function wordstodict()
+    worddict = Dict()
+    for line in eachline(juliadir * "words.txt")
+        worddict[line] = nothing
+    end
+    return worddict
+end
+
+function subtract(d1, d2)
+    return setdiff(d1, d2)
+end
+
+d1 = bookwordstodict()
+d2 = wordstodict()
+println(subtract(d1, d2))
