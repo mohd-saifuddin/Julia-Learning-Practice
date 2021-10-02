@@ -23,6 +23,9 @@ docs/site/
 # environment.
 Manifest.toml
 
-# Words
+# Words and text files
 *.txt
+
+# IPython notebooks
+.ipynb_checkpoints
 
