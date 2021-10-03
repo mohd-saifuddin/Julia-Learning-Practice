@@ -194,6 +194,6 @@ booklist = readthebook(fileloc)
 pairs = makepairs(booklist)
 lookup = markovmodel(pairs)
 firstword = inputthemodel(booklist)
-howmany = 50
+howmany = rand(50:75)
 predictedsentence = predictword(lookup, firstword, howmany)
 println(predictedsentence)
