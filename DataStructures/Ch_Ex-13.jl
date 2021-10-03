@@ -143,3 +143,57 @@ end
 d1 = bookwordstodict()
 d2 = wordstodict()
 println(subtract(d1, d2))
+
+
+# Ex 13.8 - Markvov Analysis
+
+function readthebook(fileloc)
+    booklist = [word for line in eachline(fileloc) for word in split(line)]
+    return booklist
+end
+
+function makepairs(booklist)
+    pairs = []
+    for current in 1:length(booklist)-1
+        push!(pairs, (booklist[current], booklist[current+1]))
+    end
+    return pairs
+end
+
+function markovmodel(pairs)
+    lookup = Dict()
+    for (word1, word2) in pairs
+        if word1 ∈ keys(lookup)
+            push!(lookup[word1], word2)
+        else
+            lookup[word1] = [word2]
+        end
+    end
+    return lookup
+end
+
+function inputthemodel(booklist)
+    firstword = rand(booklist)
+    while islowercase(first(firstword))
+        firstword = rand(booklist)
+    end
+    return firstword
+end
+
+function predictword(lookup, firstword, howmany=20)
+    markovchain = [firstword]
+    for count in 1:howmany
+        push!(markovchain, rand(lookup[markovchain[end]]))
+    end
+    predictedsentence = join(markovchain, " ")
+    return predictedsentence
+end
+
+fileloc = juliadir * "emma.txt"
+booklist = readthebook(fileloc)
+pairs = makepairs(booklist)
+lookup = markovmodel(pairs)
+firstword = inputthemodel(booklist)
+howmany = 50
+predictedsentence = predictword(lookup, firstword, howmany)
+println(predictedsentence)
