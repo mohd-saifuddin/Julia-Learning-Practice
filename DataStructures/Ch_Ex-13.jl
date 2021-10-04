@@ -160,7 +160,7 @@ function makepairs(booklist)
     return pairs
 end
 
-function markovmodel(pairs)
+function constructlookup(pairs)
     lookup = Dict()
     for (word1, word2) in pairs
         if word1 ∈ keys(lookup)
@@ -180,7 +180,7 @@ function inputthemodel(booklist)
     return firstword
 end
 
-function predictword(lookup, firstword, howmany=20)
+function markovmodel(lookup, firstword, howmany=20)
     markovchain = [firstword]
     for count in 1:howmany
         push!(markovchain, rand(lookup[markovchain[end]]))
@@ -192,8 +192,8 @@ end
 fileloc = juliadir * "emma.txt"
 booklist = readthebook(fileloc)
 pairs = makepairs(booklist)
-lookup = markovmodel(pairs)
+lookup = constructlookup(pairs)
 firstword = inputthemodel(booklist)
 howmany = rand(50:75)
-predictedsentence = predictword(lookup, firstword, howmany)
+predictedsentence = markovmodel(lookup, firstword, howmany)
 println(predictedsentence)
