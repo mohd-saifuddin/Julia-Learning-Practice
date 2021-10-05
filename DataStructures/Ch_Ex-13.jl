@@ -150,10 +150,7 @@ println(subtract(d1, d2))
 
 # Ex 13.8 - Markvov Analysis
 
-function readthebook(fileloc)
-    booklist = [word for line in eachline(fileloc) for word in split(line)]
-    return booklist
-end
+readthebook(fileloc) = [word for line in eachline(fileloc) for word in split(line)]
 
 function makepairs(booklist)
     pairs = []
@@ -193,10 +190,8 @@ function markovmodel(lookup, firstword, howmany=20)
 end
 
 fileloc = juliadir * "emma.txt"
-booklist = readthebook(fileloc)
-pairs = makepairs(booklist)
-lookup = constructlookup(pairs)
-firstword = inputthemodel(booklist)
+lookup = fileloc |> readthebook |> makepairs |> constructlookup
+firstword = fileloc |> readthebook |> inputthemodel
 howmany = rand(50:75)
 predictedsentence = markovmodel(lookup, firstword, howmany)
 println(predictedsentence)
@@ -241,17 +236,15 @@ end
 function plotzipflaw(xs, ys)
     title = "Zipf's Law"
     label = "Frequency"
-    size = (1000, 800)
-    zipfplot = plot(xs, ys, title=title, label=label, size=size)
+    size = (1000, 700)
+    lw = 3
+    zipfplot = plot(xs, ys, lw=lw, title=title, label=label, size=size)
     xlabel!(zipfplot, "Rank")
     savefig(zipfplot, "zipfplot.png")
 end
 
 fileloc = "zipfexercisebook.txt"
-allwords = readthebook(fileloc)
-allwords = cleanthewords(allwords)
-hist = wordhistogram(allwords)
-zipflist = zipfstructure(hist)
+zipflist = fileloc |> readthebook |> cleanthewords |> wordhistogram |> zipfstructure
 zipfprinter(zipflist)
 
 xs = getfield.(zipflist, 2)
