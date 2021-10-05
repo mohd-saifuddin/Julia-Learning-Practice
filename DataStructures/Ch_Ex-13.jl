@@ -1,6 +1,9 @@
 # Ch-13 & Ex-13
 
+using Plots
+
 juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
+
 
 # Ex 13.1
 
@@ -197,3 +200,60 @@ firstword = inputthemodel(booklist)
 howmany = rand(50:75)
 predictedsentence = markovmodel(lookup, firstword, howmany)
 println(predictedsentence)
+
+
+# Ex 13.9 Zipf's Law
+
+function cleanthewords(allwords)
+    allwordsmodifiled = []
+    pattern = r"[\[\] .,/`~!@#$%^&*()=+{}:;'\"<>?|\\]"
+    for word in allwords
+        append!(allwordsmodifiled, split.(lowercase(word), pattern))
+    end
+    filter!(x->x≠"", allwordsmodifiled)
+    return allwordsmodifiled
+end
+
+function zipfstructure(hist)
+    hist = reverse(sort(collect(hist), by=x->x[2]))
+    zipflist = []
+    rank = 1
+    for (word, freq) in hist
+        push!(zipflist, (word, log(rank), log(freq)))
+        rank += 1
+    end
+    return zipflist
+end
+
+function zipfprinter(zipflist, num::Int64=20)
+    f = firstindex(zipflist)
+    l = lastindex(zipflist)
+    println()
+    for zipf in zipflist[f:num]
+        println(zipf)
+    end
+    println()
+    for zipf in zipflist[l-num:l]
+        println(zipf)
+    end
+end
+
+function plotzipflaw(xs, ys)
+    title = "Zipf's Law"
+    label = "Frequency"
+    size = (1000, 800)
+    zipfplot = plot(xs, ys, title=title, label=label, size=size)
+    xlabel!(zipfplot, "Rank")
+    savefig(zipfplot, "zipfplot.png")
+end
+
+fileloc = "zipfexercisebook.txt"
+allwords = readthebook(fileloc)
+allwords = cleanthewords(allwords)
+hist = wordhistogram(allwords)
+zipflist = zipfstructure(hist)
+zipfprinter(zipflist)
+
+xs = getfield.(zipflist, 2)
+ys = getfield.(zipflist, 3)
+plotzipflaw(xs, ys)
