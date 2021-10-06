@@ -238,8 +238,9 @@ function plotzipflaw(xs, ys)
     label = "Frequency"
     size = (1000, 700)
     lw = 3
+    labelx = "Rank"
     zipfplot = plot(xs, ys, lw=lw, title=title, label=label, size=size)
-    xlabel!(zipfplot, "Rank")
+    xlabel!(zipfplot, labelx)
     savefig(zipfplot, "zipfplot.png")
 end
 
