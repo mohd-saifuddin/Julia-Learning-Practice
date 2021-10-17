@@ -32,3 +32,6 @@ Manifest.toml
 # Images
 *.png
 
+#jl
+julialearndir.jl
+
