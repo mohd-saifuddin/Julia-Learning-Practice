@@ -1,6 +1,9 @@
 # Ex 10.1
 
-juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
+include("./../julialearndir.jl")
+
+using .JuliaLearnDir
+
 
 function nestedsum(arr)
     rst = Any[]
@@ -108,7 +111,7 @@ function isanagram(str1, str2)
     pattern = r"[\[\] .,/`~!@#$%^&*()-_=+{}:;''\"<>?|\\]"
     str1 = replace.(lowercase(str1), pattern => "")
     str2 = replace.(lowercase(str2), pattern => "")
-    if sort(str1) == sort(str2)
+    if sort(collect(str1)) == sort(collect(str2))
         return true
     else
         return false
@@ -172,7 +175,7 @@ birthday_paradox(n_students, classrooms)
 
 function wordstoarrpush()
     arr = []
-    for line in eachline(juliadir * "words.txt")
+    for line in eachline(getjuliadir() * "Textfiles/words.txt")
         push!(arr, line)
     end
     return arr
@@ -182,7 +185,7 @@ end
 
 function wordstoarridiom()
     arr = []
-    for line in eachline(juliadir * "words.txt")
+    for line in eachline(getjuliadir() * "Textfiles/words.txt")
         arr = [arr..., line]
     end
     return arr

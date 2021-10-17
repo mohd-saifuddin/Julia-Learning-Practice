@@ -1,6 +1,9 @@
 # Ch-11 & Ex-11
 
-juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
+include("./../julialearndir.jl")
+
+using .JuliaLearnDir
+
 
 function histogram(s)
     d = Dict()
@@ -112,7 +115,7 @@ println(fibonacci(n))
 
 function wordstodict()
     worddict = Dict()
-    for line in eachline(juliadir * "words.txt")
+    for line in eachline(getjuliadir() * "Textfiles/words.txt")
         if line ∉ keys(worddict)
             worddict[line] = nothing
         end
@@ -126,7 +129,7 @@ end
 
 function wordstoarr()
     arr = []
-    for line in eachline(juliadir * "words.txt")
+    for line in eachline(getjuliadir() * "Textfiles/words.txt")
         push!(arr, line)
     end
     return arr

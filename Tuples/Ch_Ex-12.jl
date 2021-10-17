@@ -1,6 +1,9 @@
 # Ch-12 & Ex-12
 
-juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
+include("./../julialearndir.jl")
+
+using .JuliaLearnDir
+
 
 function printall(args...)
     println(args)
@@ -49,7 +52,7 @@ println(hasmatch(t1, t2))
 function readthestoryfile()
     pattern = r"[\[\] .,/`~!@#$%^&*()-_=+{}:;''\"<>?|\\]"
     alicedata = ""
-    for line in eachline(juliadir * "alice_wonderland.txt")
+    for line in eachline(getjuliadir() * "Textfiles/alice_wonderland.txt")
         alicedata *= replace.(lowercase(line), pattern => "")
     end
     return alicedata
@@ -79,7 +82,7 @@ mostfrequent(strdata)
 
 function wordstodict()
     worddict = Dict()
-    for line in eachline(juliadir * "words.txt")
+    for line in eachline(getjuliadir() * "Textfiles/words.txt")
         if line ∉ keys(worddict)
             worddict[line] = nothing
         end

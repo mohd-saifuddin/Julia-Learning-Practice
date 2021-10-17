@@ -2,13 +2,15 @@
 
 using Plots
 
-juliadir = "/home/msaifuddin/Desktop/Julia-Learning-Practice/"
+include("./../julialearndir.jl")
+
+using .JuliaLearnDir
 
 
 # Ex 13.1
 
 function ex13_1()
-    file = open(juliadir * "testfile.txt", "r")
+    file = open(getjuliadir() * "Textfiles/testfile.txt", "r")
     for line in eachline(file)
         newstr = ""
         for char in lowercase(line)
@@ -29,7 +31,7 @@ ex13_1()
 # Ex 13.2
 
 function getallwordsfrombook()
-    file = open(juliadir * "alice_wonderland.txt", "r")
+    file = open(getjuliadir() * "Textfiles/alice_wonderland.txt", "r")
     lines = readlines(file)
     close(file)
     newlines = []
@@ -83,7 +85,7 @@ get20most(hist, num)
 
 function wordstoarr()
     wordlist = []
-    for word in eachline(juliadir * "words.txt")
+    for word in eachline(getjuliadir() * "Textfiles/words.txt")
         push!(wordlist, word)
     end
     return wordlist
@@ -133,7 +135,7 @@ end
 
 function wordstodict()
     worddict = Dict()
-    for line in eachline(juliadir * "words.txt")
+    for line in eachline(getjuliadir() * "Textfiles/words.txt")
         worddict[line] = nothing
     end
     return worddict
@@ -189,7 +191,7 @@ function markovmodel(lookup, firstword, howmany=20)
     return predictedsentence
 end
 
-fileloc = juliadir * "emma.txt"
+fileloc = getjuliadir() * "Textfiles/emma.txt"
 lookup = fileloc |> readthebook |> makepairs |> constructlookup
 firstword = fileloc |> readthebook |> inputthemodel
 howmany = rand(50:75)
@@ -241,10 +243,11 @@ function plotzipflaw(xs, ys)
     labelx = "Rank"
     zipfplot = plot(xs, ys, lw=lw, title=title, label=label, size=size)
     xlabel!(zipfplot, labelx)
-    savefig(zipfplot, "zipfplot.png")
+    savefig(zipfplot, getjuliadir() * "DataStructures/zipfplot.png")
+    println("$title graph saved successfully.")
 end
 
-fileloc = "zipfexercisebook.txt"
+fileloc = getjuliadir() * "Textfiles/zipfexercisebook.txt"
 zipflist = fileloc |> readthebook |> cleanthewords |> wordhistogram |> zipfstructure
 zipfprinter(zipflist)
 
