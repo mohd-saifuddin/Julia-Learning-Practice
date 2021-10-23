@@ -93,3 +93,12 @@ p1 = Point(1.0, 2.0)
 p2 = deepcopy(p1)
 println(p1 ≡ p2)
 println(p1 == p2)
+
+
+# Ex 15.3
+
+struct Circle
+    center
+    radius
+end
+
