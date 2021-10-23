@@ -27,9 +27,57 @@ mutable struct MPoint
     y
 end
 
-blank = MPoint(0, 0)
-println(blank)
-blank.x = 1.0
-blank.y = 2.0
-println(blank)
+function movepoint!(p, dx, dy)
+    p.x += dx
+    p.y += dy
+    return nothing
+end
+
+origin = MPoint(0.0, 0.0)
+println(origin)
+movepoint!(origin, 1, 2)
+println(origin)
+
+
+"""
+Represents a rectangle.
+
+fields: `width`, `height`, `corner`.
+"""
+struct Rectangle
+    width
+    height
+    corner
+end
+
+function moverectangle!(rect, dx, dy)
+    return movepoint!(rect.corner, dx, dy)
+end
+
+width = 100.0
+height = 200.0
+corner = MPoint(0.0, 0.0)
+box = Rectangle(width, height, corner)
+println(box)
+
+dx = 1.0
+dy = 2.0
+moverectangle!(box, dx, dy)
+println(box)
+
+dx = 10.0
+dy = 20.0
+moverectangle!(box, dx, dy)
+println(box)
+
+
+findcenter(rect) = Point(((rect.corner.x + rect.width) ÷ 2), ((rect.corner.y + rect.height) ÷ 2))
+
+width = 100.0
+height = 200.0
+corner = MPoint(10.0, 20.0)
+rect = Rectangle(width, height, corner)
+println(rect)
+center = findcenter(rect)
+println(center)
 
