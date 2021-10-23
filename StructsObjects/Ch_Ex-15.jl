@@ -20,3 +20,16 @@ p1 = Point(5, 4)
 p2 = Point(1, 1)
 distance = distancebetweenpoints(p1, p2)
 println(distance)
+
+
+mutable struct MPoint
+    x
+    y
+end
+
+blank = MPoint(0, 0)
+println(blank)
+blank.x = 1.0
+blank.y = 2.0
+println(blank)
+
