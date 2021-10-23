@@ -102,3 +102,9 @@ struct Circle
     radius
 end
 
+center = Point(150, 100)
+radius = 75
+c1 = Circle(center, radius)
+println(c1)
+
+
