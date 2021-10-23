@@ -186,3 +186,53 @@ corner = MPoint(x, y)
 rect = Rectangle(width, height, corner)
 
 println(rectincircle(circle, rect))
+
+
+function rectcircleoverlap(circle, rect)
+    println("\nRadius = $(circle.radius)")
+    v1 = rect.corner
+    v2 = deepcopy(v1); movepoint!(v2, v1.x, 0)
+    v3 = deepcopy(v2); movepoint!(v3, 0, -v2.y)
+    v4 = deepcopy(v3); movepoint!(v4, -v3.x, 0)
+    println("$(v1), $(v2), $(v3), $(v4)")
+
+    if (pointincircle(circle, v1))
+        return true
+    end
+    if (pointincircle(circle, v2))
+        return true
+    end
+    if (pointincircle(circle, v3))
+        return true
+    end
+    if (pointincircle(circle, v4))
+        return true
+    end
+    return false
+end
+
+center = Point(150, 100)
+radius = 200
+circle = Circle(center, radius)
+
+x = 50
+y = 10
+width = 100.0
+height = 200.0
+corner = MPoint(x, y)
+rect = Rectangle(width, height, corner)
+
+println(rectcircleoverlap(circle, rect))
+
+center = Point(150, 100)
+radius = 100
+circle = Circle(center, radius)
+
+x = 50
+y = 10
+width = 100.0
+height = 200.0
+corner = MPoint(x, y)
+rect = Rectangle(width, height, corner)
+
+println(rectcircleoverlap(circle, rect))
