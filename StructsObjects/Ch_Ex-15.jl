@@ -98,6 +98,11 @@ println(p1 == p2)
 
 # Ex 15.3
 
+"""
+Represents a circle.
+
+fields: `center`, `radius`.
+"""
 struct Circle
     center
     radius
