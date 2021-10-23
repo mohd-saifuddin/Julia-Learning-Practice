@@ -81,3 +81,15 @@ println(rect)
 center = findcenter(rect)
 println(center)
 
+
+# Ex 15.2
+
+mp1 = MPoint(1.0, 2.0)
+mp2 = deepcopy(mp1)
+println(mp1 ≡ mp2)
+println(mp1 == mp2)
+
+p1 = Point(1.0, 2.0)
+p2 = deepcopy(p1)
+println(p1 ≡ p2)
+println(p1 == p2)
