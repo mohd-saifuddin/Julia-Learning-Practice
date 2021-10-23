@@ -12,7 +12,8 @@ println("$(typeof(p1)), $(typeof(p2))")
 
 # Ex 15.1
 
-function distancebetweenpoints(p1::Point, p2::Point)
+function distancebetweenpoints(p1, p2)
+    println("$(p1), $(p2)")
     return sqrt((p2.x - p1.x)^2 + (p2.y - p1.y)^2)
 end
 
@@ -110,26 +111,73 @@ println(c1)
 function pointincircle(circle, point)
     distance = distancebetweenpoints(circle.center, point)
     println(distance)
-    return circle.radius == distance
+    return distance <= circle.radius
 end
 
 point = Point(5, 4)
 center = Point(1, 1)
 radius = 5
 circle = Circle(center, radius)
-
 println(pointincircle(circle, point))
 
 point = Point(5, 4)
 center = Point(0, 0)
 radius = 5
 circle = Circle(center, radius)
-
 println(pointincircle(circle, point))
 
 point = Point(2, 2)
 center = Point(1, 1)
 radius = 5
 circle = Circle(center, radius)
-
 println(pointincircle(circle, point))
+
+
+function rectincircle(circle, rect)
+    println("\nRadius = $(circle.radius)")
+    v1 = rect.corner
+    v2 = deepcopy(v1); movepoint!(v2, v1.x, 0)
+    v3 = deepcopy(v2); movepoint!(v3, 0, -v2.y)
+    v4 = deepcopy(v3); movepoint!(v4, -v3.x, 0)
+    println("$(v1), $(v2), $(v3), $(v4)")
+
+    if ~(pointincircle(circle, v1))
+        return false
+    end
+    if ~(pointincircle(circle, v2))
+        return false
+    end
+    if ~(pointincircle(circle, v3))
+        return false
+    end
+    if ~(pointincircle(circle, v4))
+        return false
+    end
+    return true
+end
+
+center = Point(150, 100)
+radius = 200
+circle = Circle(center, radius)
+
+x = 50
+y = 10
+width = 100.0
+height = 200.0
+corner = MPoint(x, y)
+rect = Rectangle(width, height, corner)
+
+println(rectincircle(circle, rect))
+
+center = Point(150, 100)
+radius = 100
+circle = Circle(center, radius)
+
+x = 50
+y = 10
+width = 100.0
+height = 200.0
+corner = MPoint(x, y)
+rect = Rectangle(width, height, corner)
+
+println(rectincircle(circle, rect))
