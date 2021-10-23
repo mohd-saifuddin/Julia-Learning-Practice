@@ -107,4 +107,29 @@ radius = 75
 c1 = Circle(center, radius)
 println(c1)
 
+function pointincircle(circle, point)
+    distance = distancebetweenpoints(circle.center, point)
+    println(distance)
+    return circle.radius == distance
+end
 
+point = Point(5, 4)
+center = Point(1, 1)
+radius = 5
+circle = Circle(center, radius)
+
+println(pointincircle(circle, point))
+
+point = Point(5, 4)
+center = Point(0, 0)
+radius = 5
+circle = Circle(center, radius)
+
+println(pointincircle(circle, point))
+
+point = Point(2, 2)
+center = Point(1, 1)
+radius = 5
+circle = Circle(center, radius)
+
+println(pointincircle(circle, point))
