@@ -43,7 +43,7 @@ println(origin)
 """
 Represents a rectangle.
 
-fields: `width`, `height`, `corner`.
+fields: width, height, corner.
 """
 struct Rectangle
     width
@@ -101,7 +101,7 @@ println(p1 == p2)
 """
 Represents a circle.
 
-fields: `center`, `radius`.
+fields: center, radius.
 """
 struct Circle
     center
