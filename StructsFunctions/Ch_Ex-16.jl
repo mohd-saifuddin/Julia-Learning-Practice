@@ -1,4 +1,5 @@
 using Printf
+using Dates
 
 
 """
@@ -77,3 +78,13 @@ finishtime = MyTime(1, 20, 40)
 miles = 10
 pace = calculate_pace(finishtime, miles)
 @printf "Average pace to travel %.2f miles is %02d:%02d:%02d\n" miles pace.hour pace.minute pace.second
+
+
+# Ex 16.7
+
+function printdayofweek()
+    println("Current date: $(Date(now()))")
+    println("Day of the week: $(dayofweek(now()))")
+end
+
+printdayofweek()
