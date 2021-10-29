@@ -56,3 +56,24 @@ seconds = timetoint(time)
 time = inttotime(seconds)
 @printf "%02d:%02d:%02d --> %d\n" time.hour time.minute time.second seconds
 @printf "%d --> %02d:%02d:%02d\n" seconds time.hour time.minute time.second
+
+
+# Ex 16.6
+
+function multime(time, number)
+    seconds = timetoint(time) * number
+    return inttotime(seconds)
+end
+
+time = MyTime(1, 1, 1)
+number = 11
+printtime(multime(time, number))
+
+function calculate_pace(finishtime, miles)
+    return multime(finishtime, 1/miles)
+end
+
+finishtime = MyTime(1, 20, 40)
+miles = 10
+pace = calculate_pace(finishtime, miles)
+@printf "Average pace to travel %.2f miles is %02d:%02d:%02d\n" miles pace.hour pace.minute pace.second
