@@ -88,3 +88,37 @@ function printdayofweek()
 end
 
 printdayofweek()
+
+
+function timenextbrithday(birthdatetime)
+    println("\nBirth: $(birthdatetime)")
+    
+    nextbirthdatetime = DateTime("2022-10-03 08:30:15", DateFormat("y-m-d HH:MM:SS"))
+    currentnow = now()
+    
+    age = year(currentnow) - year(birthdatetime)
+    println("Age: $(age)")
+    
+    difference = (nextbirthdatetime - currentnow).value
+    a_second = (1 / 1000)
+    a_minute = (1 / 60) * a_second
+    an_hour = (1 / 60) * a_minute
+    a_day = (1 / 24) * an_hour
+    
+    daysleft = difference * a_day
+    println("Days left: $(round(Int, daysleft))")
+    
+    hoursleft = difference * an_hour
+    println("Hours left: $(round(Int, hoursleft))")
+    
+    minutesleft = difference * a_minute
+    println("Minutes left: $(round(Int, minutesleft))")
+    
+    secondsleft = difference * a_second
+    println("Seconds left: $(round(Int, secondsleft))")
+end
+
+birthdate = Date(1998, 10, 3)
+birthtime = Time(8, 30, 15)
+birthdatetime = DateTime(birthdate, birthtime)
+timenextbrithday(birthdatetime)
