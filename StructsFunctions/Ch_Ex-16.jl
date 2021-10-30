@@ -93,7 +93,7 @@ printdayofweek()
 function timenextbrithday(bday)
     println("\nBirthday: $(Date(bday))")
     current = now()
-    nbday = DateTime(Date(year(current)+1, month(bday), day(bday)))
+    nbday = DateTime(year(current)+1, month(bday), day(bday))
     println("Next birthday: $(Date(nbday))")
     age = year(current) - year(bday)
     println("Age: $(age)")
@@ -112,10 +112,5 @@ function timenextbrithday(bday)
     println("Seconds left: $(round(Int, secondsleft))")
 end
 
-bday = DateTime(Date(1998, 10, 3))
+bday = DateTime(1998, 10, 3)
 timenextbrithday(bday)
-
-
-function doubleday(b1, b2)
-    
-end
